@@ -1,6 +1,6 @@
-namespace CidadesClientes_API.DTOS.CidadeDTO
+namespace CidadesClientes_API.DTOS
 {
-	public class EditaCidadeDTO
+	public class CidadeDTO
 	{
 		public string Nome { get; set; }
 		public string Estado { get; set; }
