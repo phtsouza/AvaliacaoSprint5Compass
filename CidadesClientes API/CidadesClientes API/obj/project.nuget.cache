@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2ybxoSYyqbxttx6L7oaTCyaNzzXga+rB9krRXe6OlZDrITwp96lpM89Lag+3SnbNcPYHSV7hHbonLLcROy/a8g==",
+  "dgSpecHash": "gInP/sgkWC7rOaa5bsxOVkUV+YL9qfA711698tj9GbqVt+fz6tnFxY0Qay+Apwfr83p16gxNA8uPRAKmw9Vg/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientes API\\CidadesClientes API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\phtso\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
