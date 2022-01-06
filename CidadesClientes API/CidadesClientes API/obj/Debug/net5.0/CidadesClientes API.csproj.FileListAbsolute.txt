@@ -59,3 +59,9 @@ C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\obj\Debug\net5.0\CidadesClientes API.genruntimeconfig.cache
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\Humanizer.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

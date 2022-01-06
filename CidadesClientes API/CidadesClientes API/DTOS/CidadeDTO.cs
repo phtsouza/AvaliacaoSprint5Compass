@@ -1,3 +1,5 @@
+using System;
+
 namespace CidadesClientes_API.DTOS
 {
 	public class CidadeDTO

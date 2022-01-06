@@ -27,7 +27,7 @@ namespace CidadesClientes_API.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nascimento = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    cidadeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CidadeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Cep = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Bairro = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Logradouro = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -36,17 +36,17 @@ namespace CidadesClientes_API.Migrations
                 {
                     table.PrimaryKey("PK_Clientes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Clientes_Cidades_cidadeId",
-                        column: x => x.cidadeId,
+                        name: "FK_Clientes_Cidades_CidadeId",
+                        column: x => x.CidadeId,
                         principalTable: "Cidades",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clientes_cidadeId",
+                name: "IX_Clientes_CidadeId",
                 table: "Clientes",
-                column: "cidadeId");
+                column: "CidadeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

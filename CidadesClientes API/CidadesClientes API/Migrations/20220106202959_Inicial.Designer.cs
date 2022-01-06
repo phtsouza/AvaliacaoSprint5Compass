@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CidadesClientes_API.Migrations
 {
     [DbContext(typeof(ClienteCidadeDbContext))]
-    [Migration("20211230182241_Inicial")]
+    [Migration("20220106202959_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,9 @@ namespace CidadesClientes_API.Migrations
                     b.Property<string>("Cep")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("CidadeId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
 
@@ -59,12 +62,9 @@ namespace CidadesClientes_API.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("cidadeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("cidadeId");
+                    b.HasIndex("CidadeId");
 
                     b.ToTable("Clientes");
                 });
@@ -73,7 +73,9 @@ namespace CidadesClientes_API.Migrations
                 {
                     b.HasOne("CidadesClientes_API.Models.Cidade", "cidade")
                         .WithMany("clientes")
-                        .HasForeignKey("cidadeId");
+                        .HasForeignKey("CidadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("cidade");
                 });

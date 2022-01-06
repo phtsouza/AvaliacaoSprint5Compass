@@ -31,6 +31,7 @@ namespace CidadesClientes_API
             services.AddDbContext<ClienteCidadeDbContext>(Op => Op.UseSqlServer("Data Source=DESKTOP-LLGMG1L\\SQLEXPRESS;Initial Catalog=ClienteCidadeDb;Integrated Security=True;Connect Timeout=5;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CidadesClientes_API", Version = "v1" });
