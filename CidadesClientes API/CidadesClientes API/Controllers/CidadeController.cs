@@ -6,6 +6,7 @@ using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -34,7 +35,7 @@ namespace CidadesClientes_API.Controllers
                 _context.SaveChanges();
                 return Ok();
             }
-            return BadRequest(new { Mensagem = "Cidade já existente no banco de dados", Erro = true });
+            return BadRequest(new { Mensagem = "Cidade já existente no banco de dados!", Erro = true });
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -58,6 +59,50 @@ namespace CidadesClientes_API.Controllers
             var ListaCidadesDTO = _mapper.Map<IEnumerable<CidadeDTO>>(TodasCidades);
 
             return Ok(ListaCidadesDTO);
+        }
+
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteId(Guid Id)
+        {
+            Cidade cidadeRemovida = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+
+            if(cidadeRemovida == null)
+            {
+                return NotFound("Cidade não cadastrada!");
+            }
+
+            try
+            {
+                _context.Remove(cidadeRemovida);
+                _context.SaveChanges();
+
+                return Ok("Cidade removida!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Erro ao excluir a cidade!");
+            }
+        }
+
+        [HttpPut("{Id}")]
+        public IActionResult AtualizaId(Guid Id, [FromBody] CidadeDTO cidadeDTO)
+        {
+            Cidade cidadeParaAtualizar = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+            if (cidadeParaAtualizar == null)
+            {
+                return NotFound("Cidade não cadastrada!");
+            }
+
+            CidadeDTO novaCidade = VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
+
+            if (novaCidade != null)
+            {
+                return BadRequest("Cidade já cadastrada!");
+            }
+
+            _mapper.Map(cidadeDTO, cidadeParaAtualizar);
+            _context.SaveChanges();
+            return Ok("Cidade Atualizada!");
         }
     }
 }
