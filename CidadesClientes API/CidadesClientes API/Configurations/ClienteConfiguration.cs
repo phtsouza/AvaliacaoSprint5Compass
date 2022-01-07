@@ -31,12 +31,12 @@ namespace CidadesClientes_API.Configurations
             builder
                 .Property<Guid>("cidadeId")
                 .IsRequired();
-
+            
             builder
                 .HasOne(cl => cl.cidade)
                 .WithMany(ci => ci.clientes)
                 .HasForeignKey("cidadeId");
-
+            
             builder
                 .Property(c => c.Cep)
                 .HasColumnName("Cep")

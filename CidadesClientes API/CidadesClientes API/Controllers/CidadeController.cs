@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace CidadesClientes_API.Controllers
