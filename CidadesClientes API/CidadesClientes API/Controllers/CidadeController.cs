@@ -60,6 +60,22 @@ namespace CidadesClientes_API.Controllers
             return Ok(ListaCidadesDTO);
         }
 
+        [HttpGet("{Id}")]
+        public IActionResult GetId(Guid Id)
+        {
+            Cidade cidadeProcurada = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+
+            if (cidadeProcurada == null)
+            {
+                return NotFound("Cidade não cadastrada!");
+            }
+            else
+            {
+                var CidadeProcuradaDTO = _mapper.Map<CidadeDTO>(cidadeProcurada);
+                return Ok(CidadeProcuradaDTO);
+            }
+        }
+
         [HttpDelete("{Id}")]
         public IActionResult DeleteId(Guid Id)
         {
