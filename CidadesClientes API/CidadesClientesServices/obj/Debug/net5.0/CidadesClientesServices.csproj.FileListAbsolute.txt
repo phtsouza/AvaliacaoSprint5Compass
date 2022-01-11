@@ -10,3 +10,9 @@ C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\obj\Debug\net5.0\CidadesClientesServices.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\obj\Debug\net5.0\ref\CidadesClientesServices.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\obj\Debug\net5.0\CidadesClientesServices.pdb
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\bin\Debug\net5.0\CidadesClientesServices.runtimeconfig.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\bin\Debug\net5.0\CidadesClientesServices.runtimeconfig.dev.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientesServices\obj\Debug\net5.0\CidadesClientesServices.genruntimeconfig.cache

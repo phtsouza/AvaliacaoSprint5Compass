@@ -1,17 +1,12 @@
+/*
 using AutoMapper;
-using CidadesClientes_API.Context;
-using CidadesClientes_API.DTOS;
-using CidadesClientes_API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -137,3 +132,4 @@ namespace CidadesClientes_API.Controllers
 
     }
 }
+*/

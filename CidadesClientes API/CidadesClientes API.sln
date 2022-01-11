@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CidadesClientes API", "CidadesClientes API\CidadesClientes API.csproj", "{5735172D-649B-4D4D-B670-8681BA3851FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CidadesClientesServices", "CidadesClientesServices\CidadesClientesServices.csproj", "{CA0F37BD-ABB2-4424-BB5D-D5D3B4CE810B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CidadesClientesServices", "CidadesClientesServices\CidadesClientesServices.csproj", "{CA0F37BD-ABB2-4424-BB5D-D5D3B4CE810B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestesCidadesClientesAPI", "TestesCidadesClientesAPI\TestesCidadesClientesAPI.csproj", "{CE0A048E-F3E2-4E44-921A-565C06D7D716}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CA0F37BD-ABB2-4424-BB5D-D5D3B4CE810B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA0F37BD-ABB2-4424-BB5D-D5D3B4CE810B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA0F37BD-ABB2-4424-BB5D-D5D3B4CE810B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0A048E-F3E2-4E44-921A-565C06D7D716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0A048E-F3E2-4E44-921A-565C06D7D716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0A048E-F3E2-4E44-921A-565C06D7D716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0A048E-F3E2-4E44-921A-565C06D7D716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

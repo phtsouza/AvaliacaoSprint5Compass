@@ -1,11 +1,8 @@
-using CidadesClientes_API.Context;
-using CidadesClientes_API.DTOS;
-using CidadesClientes_API.Models;
 using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using CidadesClientesServices.Contracts;
+using CidadesClientesServices.DTOS;
+using CidadesClientesServices.Models;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -13,57 +10,37 @@ namespace CidadesClientes_API.Controllers
     [Route("api/[controller]")]
     public class CidadeController : ControllerBase
     {
-        private ClienteCidadeDbContext _context;
-        private IMapper _mapper;
-        
-        public CidadeController(ClienteCidadeDbContext Contexto, IMapper mapper) 
+        private ICidadeServices _cidadeServices;
+
+        public CidadeController(ICidadeServices cidadeServices)
         {
-            _context = Contexto;
-            _mapper = mapper;
+            _cidadeServices = cidadeServices;
         }
 
         [HttpPost]
         public IActionResult Post([FromBody] CidadeDTO cidadeDTO)
         {
-            var NovaCidade = VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
+            CidadeDTO NovaCidade = _cidadeServices.VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
             
             if(NovaCidade == null)
             {
-                Cidade cidade = _mapper.Map<Cidade>(cidadeDTO);
-                _context.Cidades.Add(cidade);
-                _context.SaveChanges();
-                return Ok();
+                CidadeRetornaDTO novaCidadeDTO =_cidadeServices.CadastrarCidade(cidadeDTO);
+
+                return CreatedAtAction(nameof(GetId), new { Id = novaCidadeDTO.Id }, novaCidadeDTO);
             }
             return BadRequest(new { Mensagem = "Cidade já existente no banco de dados!", Erro = true });
-        }
-
-        [ApiExplorerSettings(IgnoreApi = true)]
-        public CidadeDTO VerificaIgualdade(string nomeCidade, string estadoCidade)
-        {
-            var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == nomeCidade && C.Estado == estadoCidade);
-
-            if(ContemCidade != null)
-            {
-                CidadeDTO cidadeRetorno = _mapper.Map<CidadeDTO>(ContemCidade);
-                return cidadeRetorno;
-            }
-            return null;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<Cidade> TodasCidades = _context.Cidades;
-
-            var ListaCidadesDTO = _mapper.Map<IEnumerable<CidadeDTO>>(TodasCidades);
-
-            return Ok(ListaCidadesDTO);
+            return Ok(_cidadeServices.GetAll());
         }
 
         [HttpGet("{Id}")]
         public IActionResult GetId(Guid Id)
         {
-            Cidade cidadeProcurada = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+            Cidade cidadeProcurada = _cidadeServices.GetId(Id);
 
             if (cidadeProcurada == null)
             {
@@ -71,15 +48,14 @@ namespace CidadesClientes_API.Controllers
             }
             else
             {
-                var CidadeProcuradaDTO = _mapper.Map<CidadeDTO>(cidadeProcurada);
-                return Ok(CidadeProcuradaDTO);
+                return Ok(cidadeProcurada);
             }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult DeleteId(Guid Id)
         {
-            Cidade cidadeRemovida = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+            Cidade cidadeRemovida = _cidadeServices.GetId(Id);
 
             if(cidadeRemovida == null)
             {
@@ -88,36 +64,37 @@ namespace CidadesClientes_API.Controllers
 
             try
             {
-                _context.Remove(cidadeRemovida);
-                _context.SaveChanges();
+                _cidadeServices.Delete(cidadeRemovida);
 
-                return Ok("Cidade removida!");
+                return NoContent();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return BadRequest("Erro ao excluir a cidade!");
             }
+            
         }
-
+        
         [HttpPut("{Id}")]
         public IActionResult AtualizaId(Guid Id, [FromBody] CidadeDTO cidadeDTO)
         {
-            Cidade cidadeParaAtualizar = _context.Cidades.FirstOrDefault(C => C.Id == Id);
+            Cidade cidadeParaAtualizar = _cidadeServices.GetId(Id);
             if (cidadeParaAtualizar == null)
             {
                 return NotFound("Cidade não cadastrada!");
             }
 
-            CidadeDTO novaCidade = VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
+            CidadeDTO novaCidade = _cidadeServices.VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
 
             if (novaCidade != null)
             {
                 return BadRequest("Cidade já cadastrada!");
             }
 
-            _mapper.Map(cidadeDTO, cidadeParaAtualizar);
-            _context.SaveChanges();
+            _cidadeServices.AtualizaCidade(cidadeDTO, cidadeParaAtualizar);
+            
             return Ok("Cidade Atualizada!");
         }
+        
     }
 }

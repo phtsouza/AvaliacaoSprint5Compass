@@ -1,18 +1,14 @@
-using CidadesClientes_API.Context;
+using CidadesClientesServices.Context;
+using CidadesClientesServices.Contracts;
+using CidadesClientesServices.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CidadesClientes_API
 {
@@ -31,6 +27,7 @@ namespace CidadesClientes_API
             services.AddDbContext<ClienteCidadeDbContext>(Op => Op.UseSqlServer("Data Source=DESKTOP-LLGMG1L\\SQLEXPRESS;Initial Catalog=ClienteCidadeDb;Integrated Security=True;Connect Timeout=5;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
             services.AddControllers();
+            services.AddTransient<ICidadeServices, CidadeService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
