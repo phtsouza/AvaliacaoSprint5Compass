@@ -28,6 +28,7 @@ namespace CidadesClientes_API
 
             services.AddControllers();
             services.AddTransient<ICidadeServices, CidadeService>();
+            services.AddTransient<IClienteServices, ClienteService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
