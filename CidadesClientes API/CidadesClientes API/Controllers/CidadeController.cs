@@ -3,6 +3,10 @@ using System;
 using CidadesClientesServices.Contracts;
 using CidadesClientesServices.DTOS;
 using CidadesClientesServices.Models;
+using CidadesClientes_API.Validators;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using FluentValidation.Results;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -20,6 +24,14 @@ namespace CidadesClientes_API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CidadeDTO cidadeDTO)
         {
+            var result = _cidadeServices.VerificaErros(cidadeDTO);
+            IList<ValidationFailure> erros = result.Errors;
+
+            if (!result.IsValid)
+            {
+                return BadRequest(erros);
+            }
+
             CidadeDTO NovaCidade = _cidadeServices.VerificaIgualdade(cidadeDTO.Nome, cidadeDTO.Estado);
             
             if(NovaCidade == null)
@@ -78,6 +90,14 @@ namespace CidadesClientes_API.Controllers
         [HttpPut("{Id}")]
         public IActionResult AtualizaId(Guid Id, [FromBody] CidadeDTO cidadeDTO)
         {
+            var result = _cidadeServices.VerificaErros(cidadeDTO);
+            IList<ValidationFailure> erros = result.Errors;
+
+            if (!result.IsValid)
+            {
+                return BadRequest(erros);
+            }
+
             Cidade cidadeParaAtualizar = _cidadeServices.GetId(Id);
             if (cidadeParaAtualizar == null)
             {

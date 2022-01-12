@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using CidadesClientes_API.Validators;
 using CidadesClientesServices.Context;
 using CidadesClientesServices.Contracts;
 using CidadesClientesServices.DTOS;
 using CidadesClientesServices.Models;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +59,14 @@ namespace CidadesClientesServices.Services
             Cidade cidadeProcurada = _context.Cidades.FirstOrDefault(C => C.Id == Id);
 
             return cidadeProcurada;
+        }
+
+        public ValidationResult VerificaErros(CidadeDTO cidadeDTO)
+        {
+            var cidadeValidator = new CidadeValidator();
+            var result = cidadeValidator.Validate(cidadeDTO);
+
+            return result;
         }
 
         public CidadeDTO VerificaIgualdade(string nomeCidade, string estadoCidade)

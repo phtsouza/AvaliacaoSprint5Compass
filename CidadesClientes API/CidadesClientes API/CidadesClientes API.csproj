@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Services\**" />
+    <Compile Remove="Validators\**" />
     <Content Remove="Services\**" />
+    <Content Remove="Validators\**" />
     <EmbeddedResource Remove="Services\**" />
+    <EmbeddedResource Remove="Validators\**" />
     <None Remove="Services\**" />
+    <None Remove="Validators\**" />
   </ItemGroup>
 
   <ItemGroup>

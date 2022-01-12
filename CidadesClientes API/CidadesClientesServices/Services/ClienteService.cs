@@ -4,6 +4,8 @@ using CidadesClientesServices.Contracts;
 using CidadesClientesServices.DTOS;
 using CidadesClientesServices.DTOS.ClienteDTOS;
 using CidadesClientesServices.Models;
+using CidadesClientesServices.Validators;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -109,6 +111,14 @@ namespace CidadesClientesServices.Services
                 clienteProcurado.Bairro = viaCepDTO.bairro;
             }
             _context.SaveChanges();
+        }
+
+        public ValidationResult VerificaErros(ClienteDTO clienteDTO)
+        {
+            var cidadeValidator = new ClienteValidator();
+            var result = cidadeValidator.Validate(clienteDTO);
+
+            return result;
         }
     }
 }

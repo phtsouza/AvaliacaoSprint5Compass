@@ -93,3 +93,5 @@ C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\tr\System.Private.ServiceModel.resources.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\zh-Hans\System.Private.ServiceModel.resources.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\zh-Hant\System.Private.ServiceModel.resources.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\CidadesClientes API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll

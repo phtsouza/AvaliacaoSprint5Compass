@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ehOosJ/9YOcpfvETLnY4pl2FVq5R2ToFuhepxWGtdeyFJF1JVqFIlpJ09GX5lW14zv20AZIxzAAWqST+bMn7dQ==",
+  "dgSpecHash": "jR8p+VT75P19sbMqNJjXQNiTdcorewGnwCa4EDre2RhWcO2zJlLJ2RBBIMJIm7ineNWYzvhhZ3lLdGfiJJ/g9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientes API\\CidadesClientes API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phtso\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\phtso\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\phtso\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

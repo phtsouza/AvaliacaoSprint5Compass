@@ -2,8 +2,10 @@ using CidadesClientesServices.Contracts;
 using CidadesClientesServices.DTOS;
 using CidadesClientesServices.DTOS.ClienteDTOS;
 using CidadesClientesServices.Models;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -21,6 +23,14 @@ namespace CidadesClientes_API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
+            var result = _clienteService.VerificaErros(clienteDTO);
+            IList<ValidationFailure> erros = result.Errors;
+
+            if (!result.IsValid)
+            {
+                return BadRequest(erros);
+            }
+
             ViaCepDTO viaCepDTO = _clienteService.BuscaCep(clienteDTO.Cep);
 
             if (viaCepDTO != null)
@@ -72,6 +82,14 @@ namespace CidadesClientes_API.Controllers
         [HttpPut("{Id}")]
         public IActionResult AtualizaId(Guid Id, [FromBody] ClienteDTO clienteDTO)
         {
+            var result = _clienteService.VerificaErros(clienteDTO);
+            IList<ValidationFailure> erros = result.Errors;
+
+            if (!result.IsValid)
+            {
+                return BadRequest(erros);
+            }
+
             Cliente ClienteProcurado = _clienteService.ProcuraCliente(Id);
 
             if (ClienteProcurado != null)
