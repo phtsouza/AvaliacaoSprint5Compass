@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tpnqY/aHznE/LFFWdwaG+yklqkTJG5IFTRXIaEIvkJFNeF7Io7RL6yS+7CZjYd5mQ638TTzs3GIHDHFojbWcAg==",
+  "dgSpecHash": "1avtTH5XUo5QQOh8g7YXeMxKzQYqnm6IYj5NNtQJ5s5jlX9bH+vX918CKahBmRanX9qrub/7jziLs/HbeGCz4A==",
   "success": true,
   "projectFilePath": "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\TestesCidadesClientesAPI\\TestesCidadesClientesAPI.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.10\\microsoft.entityframeworkcore.5.0.10.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.10\\microsoft.entityframeworkcore.abstractions.5.0.10.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.10\\microsoft.entityframeworkcore.analyzers.5.0.10.nupkg.sha512",
+    "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\5.0.10\\microsoft.entityframeworkcore.inmemory.5.0.10.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.10\\microsoft.entityframeworkcore.relational.5.0.10.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.10\\microsoft.entityframeworkcore.sqlserver.5.0.10.nupkg.sha512",
     "C:\\Users\\phtso\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

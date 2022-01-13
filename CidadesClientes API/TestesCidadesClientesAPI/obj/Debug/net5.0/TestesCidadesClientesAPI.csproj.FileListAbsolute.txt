@@ -158,3 +158,15 @@ C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesCl
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientesServices.dll
 C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientesServices.pdb
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.deps.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.runtimeconfig.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.runtimeconfig.dev.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\appsettings.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\libman.json
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.exe
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.dll
+C:\Users\phtso\source\repos\AvaliacaoSprint5\CidadesClientes API\TestesCidadesClientesAPI\bin\Debug\net5.0\CidadesClientes API.pdb

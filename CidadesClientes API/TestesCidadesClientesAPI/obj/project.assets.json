@@ -191,6 +191,18 @@
           "lib/netstandard2.0/_._": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.InMemory/5.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.10"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/5.0.10": {
         "type": "package",
         "dependencies": {
@@ -2746,6 +2758,25 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
+      "CidadesClientes API/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "CidadesClientesServices": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "5.0.10",
+          "Swashbuckle.AspNetCore": "5.6.3"
+        },
+        "compile": {
+          "bin/placeholder/CidadesClientes API.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CidadesClientes API.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "CidadesClientesServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -3169,6 +3200,20 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.5.0.10.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.InMemory/5.0.10": {
+      "sha512": "iexHF3ucf41N1he+ECHo7O8kS/DGtvW1aZB0VWBd4yH+KdFBekS0a411mTngfmfo6iO0FQkUPMiE5+U3qaldEQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.inmemory/5.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.xml",
+        "microsoft.entityframeworkcore.inmemory.5.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/5.0.10": {
@@ -9190,6 +9235,11 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "CidadesClientes API/1.0.0": {
+      "type": "project",
+      "path": "../CidadesClientes API/CidadesClientes API.csproj",
+      "msbuildProject": "../CidadesClientes API/CidadesClientes API.csproj"
+    },
     "CidadesClientesServices/1.0.0": {
       "type": "project",
       "path": "../CidadesClientesServices/CidadesClientesServices.csproj",
@@ -9198,7 +9248,9 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "CidadesClientes API >= 1.0.0",
       "CidadesClientesServices >= 1.0.0",
+      "Microsoft.EntityFrameworkCore.InMemory >= 5.0.10",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "coverlet.collector >= 3.0.2",
       "xunit >= 2.4.1",
@@ -9236,6 +9288,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientes API\\CidadesClientes API.csproj": {
+              "projectPath": "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientes API\\CidadesClientes API.csproj"
+            },
             "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientesServices\\CidadesClientesServices.csproj": {
               "projectPath": "C:\\Users\\phtso\\source\\repos\\AvaliacaoSprint5\\CidadesClientes API\\CidadesClientesServices\\CidadesClientesServices.csproj"
             }
@@ -9252,6 +9307,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": {
+            "target": "Package",
+            "version": "[5.0.10, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.9.4, )"

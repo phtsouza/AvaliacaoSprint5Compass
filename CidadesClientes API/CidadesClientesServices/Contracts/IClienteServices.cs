@@ -15,7 +15,7 @@ namespace CidadesClientesServices.Contracts
         Cliente ProcuraCliente(Guid Id);
         ClienteDTO GetId(Guid Id);
         void Delete(Cliente clienteProcurado);
-        void AtualizaCidade(ClienteDTO clienteDTO, Cliente clienteProcurado);
+        ClienteAtualizaDTO AtualizaCidade(ClienteDTO clienteDTO, Cliente clienteProcurado);
         ValidationResult VerificaErros(ClienteDTO clienteDTO);
     }
 }

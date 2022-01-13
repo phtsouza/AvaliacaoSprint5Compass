@@ -96,8 +96,9 @@ namespace CidadesClientesServices.Services
             _context.SaveChanges();
         }
 
-        public void AtualizaCidade(ClienteDTO clienteDTO, Cliente clienteProcurado)
+        public ClienteAtualizaDTO AtualizaCidade(ClienteDTO clienteDTO, Cliente clienteProcurado)
         {
+            ClienteAtualizaDTO clienteAtualizaDTO = new ClienteAtualizaDTO();
             var cepOriginal = clienteProcurado.Cep;
 
             _mapper.Map(clienteDTO, clienteProcurado);
@@ -105,12 +106,15 @@ namespace CidadesClientesServices.Services
             if (cepOriginal != clienteDTO.Cep)
             {
                 ViaCepDTO viaCepDTO = BuscaCep(clienteDTO.Cep);
-
+              
                 clienteProcurado.Logradouro = viaCepDTO.logradouro;
 
                 clienteProcurado.Bairro = viaCepDTO.bairro;
+            
             }
             _context.SaveChanges();
+
+            return clienteAtualizaDTO;
         }
 
         public ValidationResult VerificaErros(ClienteDTO clienteDTO)

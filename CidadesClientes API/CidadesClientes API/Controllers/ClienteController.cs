@@ -14,10 +14,12 @@ namespace CidadesClientes_API.Controllers
     public class ClienteController : ControllerBase
     {
         private IClienteServices _clienteService;
+        private ICidadeServices _cidadeServices;
 
-        public ClienteController(IClienteServices clienteServices)
+        public ClienteController(IClienteServices clienteServices, ICidadeServices cidadeServices)
         {
             _clienteService = clienteServices;
+            _cidadeServices = cidadeServices;
         }
 
         [HttpPost]
@@ -33,16 +35,20 @@ namespace CidadesClientes_API.Controllers
 
             ViaCepDTO viaCepDTO = _clienteService.BuscaCep(clienteDTO.Cep);
 
-            if (viaCepDTO != null)
+            if (viaCepDTO.localidade != null)
             {
                 ClienteRetornaDTO clienteNovo = _clienteService.Cadastra(clienteDTO, viaCepDTO);
 
-                if(clienteNovo != null)
+                if(clienteNovo == null)
                 {
-                    return CreatedAtAction(nameof(GetId), new { Id = clienteNovo.Id }, clienteNovo);
+                    CidadeDTO novaCidade = new CidadeDTO();
+                    novaCidade.Nome = viaCepDTO.localidade;
+                    novaCidade.Estado = viaCepDTO.uf;
+                    _cidadeServices.CadastrarCidade(novaCidade);
                 }
 
-                return BadRequest("Cidade inexistente no banco, primeiro adicione uma cidade para depois adicionar um cliente");
+                clienteNovo = _clienteService.Cadastra(clienteDTO, viaCepDTO);
+                return CreatedAtAction(nameof(GetId), new { Id = clienteNovo.Id }, clienteNovo);
             }
             return NotFound("Não foi possível encontrar o cep desejado");
         }
