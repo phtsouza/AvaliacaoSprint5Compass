@@ -103,14 +103,22 @@ namespace CidadesClientesServices.Services
 
             _mapper.Map(clienteDTO, clienteProcurado);
 
+
             if (cepOriginal != clienteDTO.Cep)
             {
                 ViaCepDTO viaCepDTO = BuscaCep(clienteDTO.Cep);
-              
-                clienteProcurado.Logradouro = viaCepDTO.logradouro;
 
-                clienteProcurado.Bairro = viaCepDTO.bairro;
-            
+                var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == viaCepDTO.localidade && C.Estado == viaCepDTO.uf);
+                if (ContemCidade != null)
+                {
+                    clienteProcurado.CidadeId = ContemCidade.Id;
+                    clienteProcurado.Logradouro = viaCepDTO.logradouro;
+                    clienteProcurado.Bairro = viaCepDTO.bairro;
+                }
+                else
+                {
+                    return null;
+                }  
             }
             _context.SaveChanges();
 

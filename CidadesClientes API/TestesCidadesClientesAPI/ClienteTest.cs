@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CidadesClientes_API.Profiles;
 using CidadesClientesServices.Context;
-using CidadesClientesServices.Contracts;
 using CidadesClientesServices.DTOS;
 using CidadesClientesServices.DTOS.ClienteDTOS;
 using CidadesClientesServices.Services;
@@ -11,7 +10,7 @@ using Xunit;
 
 namespace TestesCidadesClientesAPI
 {
-    public class ClienteTeste
+    public class ClienteTest
     {
         [Fact]
         public void QuandoClienteTemCidadeCadastradaClienteNaoNulo()

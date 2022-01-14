@@ -97,11 +97,21 @@ namespace CidadesClientes_API.Controllers
             }
 
             Cliente ClienteProcurado = _clienteService.ProcuraCliente(Id);
+            ViaCepDTO viaCepDTO = _clienteService.BuscaCep(clienteDTO.Cep);
 
             if (ClienteProcurado != null)
             {
-                _clienteService.AtualizaCidade(clienteDTO, ClienteProcurado);
-                
+                ClienteAtualizaDTO clienteAtualizaDTO = _clienteService.AtualizaCidade(clienteDTO, ClienteProcurado);
+
+                if(clienteAtualizaDTO == null)
+                {
+                    CidadeDTO novaCidade = new CidadeDTO();
+                    novaCidade.Nome = viaCepDTO.localidade;
+                    novaCidade.Estado = viaCepDTO.uf;
+                    _cidadeServices.CadastrarCidade(novaCidade);
+                }
+                clienteAtualizaDTO = _clienteService.AtualizaCidade(clienteDTO, ClienteProcurado);
+
                 return NoContent();
             }
             return NotFound("Cliente não cadastrado no banco de dados");
