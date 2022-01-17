@@ -2,22 +2,25 @@
 using CidadesClientes_API.Profiles;
 using CidadesClientesServices.Context;
 using CidadesClientesServices.DTOS;
+using CidadesClientesServices.DTOS.ClienteDTOS;
 using CidadesClientesServices.Services;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace TestesCidadesClientesAPI
 {
-    public class ViaCepTest
+    public class CidadeTest
     {
         [Fact]
-        public void QuandoCepInvalidoErroRetornaTrue()
+        public void QuandoInformacoesCompletasCidadeNaoNula()
         {
             // arrange
-            var cep = "12345678";
+            CidadeDTO cidadeDTO = new CidadeDTO();
+            cidadeDTO.Nome = "Nova Lima";
+            cidadeDTO.Estado = "MG";
 
             var memoryDatabase = new DbContextOptionsBuilder<ClienteCidadeDbContext>()
-                .UseInMemoryDatabase("test3")
+                .UseInMemoryDatabase("test1")
                 .Options;
             var memoryContext = new ClienteCidadeDbContext(memoryDatabase);
 
@@ -28,24 +31,24 @@ namespace TestesCidadesClientesAPI
             });
 
             var mapper = config.CreateMapper();
-
-            var clienteService = new ClienteService(memoryContext, mapper);
+            var cidadeService = new CidadeService(memoryContext, mapper);
 
             // act
-            ViaCepDTO cepDTO = clienteService.BuscaCep(cep);
+            CidadeRetornaDTO cidadeRetornaDTO = cidadeService.CadastrarCidade(cidadeDTO);
 
             // assert
-            Assert.True(cepDTO.erro);
+            Assert.NotNull(cidadeRetornaDTO);
         }
 
         [Fact]
-        public void QuandoCepValidoErroRetornaNull()
+        public void QuandoInformacoesIncomplestasCidadeNaoValida()
         {
             // arrange
-            var cep = "34000159";
+            CidadeDTO cidadeDTO = new CidadeDTO();
+            cidadeDTO.Nome = "Nova Lima";
 
             var memoryDatabase = new DbContextOptionsBuilder<ClienteCidadeDbContext>()
-                .UseInMemoryDatabase("test4")
+                .UseInMemoryDatabase("test2")
                 .Options;
             var memoryContext = new ClienteCidadeDbContext(memoryDatabase);
 
@@ -56,14 +59,13 @@ namespace TestesCidadesClientesAPI
             });
 
             var mapper = config.CreateMapper();
-
-            var clienteService = new ClienteService(memoryContext, mapper);
+            var cidadeService = new CidadeService(memoryContext, mapper);
 
             // act
-            ViaCepDTO cepDTO = clienteService.BuscaCep(cep);
+            var erros = cidadeService.VerificaErros(cidadeDTO);
 
             // assert
-            Assert.Null(cepDTO.erro);
+            Assert.False(erros.IsValid);
         }
     }
 }
