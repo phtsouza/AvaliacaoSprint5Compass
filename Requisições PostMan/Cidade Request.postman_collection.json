@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "ae5eadb5-cc2e-4003-97cb-f8cc23166a34",
+		"name": "Cidade Request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retorna Cidades",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/cidade",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cidade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retorna Cidade por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Cidade/00d5d3a5-a696-4cd6-132b-08d9d21fe011",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cidade",
+						"00d5d3a5-a696-4cd6-132b-08d9d21fe011"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adiciona Cidade",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Nova Lima\",\r\n  \"estado\": \"MG\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Cidade",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cidade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Cidade",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Cidade/31858009-c8a5-4763-5ec4-08d9d15914cf",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cidade",
+						"31858009-c8a5-4763-5ec4-08d9d15914cf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Cidade",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Rio de Janeiro\",\r\n  \"estado\": \"RJ\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Cidade/035938d2-871a-4d16-5ec5-08d9d15914cf",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Cidade",
+						"035938d2-871a-4d16-5ec5-08d9d15914cf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
