@@ -7,6 +7,7 @@ using CidadesClientes_API.Validators;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 
 namespace CidadesClientes_API.Controllers
 {
@@ -23,6 +24,8 @@ namespace CidadesClientes_API.Controllers
 
         // Método pelo qual adiciona uma cidade na base de dados
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post([FromBody] CidadeDTO cidadeDTO)
         {
             var result = _cidadeServices.VerificaErros(cidadeDTO); // Faz a verificação das informações enviadas
@@ -46,6 +49,7 @@ namespace CidadesClientes_API.Controllers
 
         // Método pelo qual retorna todas as cidades já cadastradas
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetAll()
         {
             return Ok(_cidadeServices.GetAll());
@@ -53,6 +57,8 @@ namespace CidadesClientes_API.Controllers
 
         // Método pelo qual retorna a cidade pelo seu id
         [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetId(Guid Id)
         {
             Cidade cidadeProcurada = _cidadeServices.GetId(Id); // Procura a cidade pelo seu Id.
@@ -69,6 +75,9 @@ namespace CidadesClientes_API.Controllers
 
         // Método pelo qual Deleta uma cidade pelo seu Id
         [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult DeleteId(Guid Id)
         {
             Cidade cidadeRemovida = _cidadeServices.GetId(Id); // Procura a cidade pelo seu Id.
@@ -93,6 +102,9 @@ namespace CidadesClientes_API.Controllers
 
         // Método para atualizar uma cidade passando seu Id
         [HttpPut("{Id}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AtualizaId(Guid Id, [FromBody] CidadeDTO cidadeDTO)
         {
             var result = _cidadeServices.VerificaErros(cidadeDTO); // Faz a verificação das informações enviadas

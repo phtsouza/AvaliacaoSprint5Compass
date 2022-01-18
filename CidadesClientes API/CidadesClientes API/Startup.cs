@@ -30,10 +30,22 @@ namespace CidadesClientes_API
             services.AddTransient<ICidadeServices, CidadeService>();
             services.AddTransient<IClienteServices, ClienteService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CidadesClientes_API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "CidadesClientes_API",
+                    Version = "v1",
+                    Description = "API para controlar as Cidades e os Clientes",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Pedro Henrique Teixeira de Souza",
+                        Url = new Uri("https://www.linkedin.com/in/pedroteixeiraa/"),
+                    }
+                });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

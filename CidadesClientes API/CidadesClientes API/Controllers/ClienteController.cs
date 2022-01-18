@@ -3,6 +3,7 @@ using CidadesClientesServices.DTOS;
 using CidadesClientesServices.DTOS.ClienteDTOS;
 using CidadesClientesServices.Models;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,9 @@ namespace CidadesClientes_API.Controllers
 
         // Método para adicionar um cliente no banco de dados
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Post([FromBody] ClienteDTO clienteDTO)
         {
             var result = _clienteService.VerificaErros(clienteDTO); // Faz a verificação das informações do cliente a ser adicionado
@@ -60,6 +64,7 @@ namespace CidadesClientes_API.Controllers
         
         // Método pelo qual retorna todos os clientes
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get()
         {
             return Ok(_clienteService.GetAll());
@@ -67,6 +72,8 @@ namespace CidadesClientes_API.Controllers
         
         // Método pelo qual retorna o cliente pelo seu Id
         [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetId(Guid Id)
         {
             
@@ -81,6 +88,8 @@ namespace CidadesClientes_API.Controllers
         
         // Método pelo qual exclui um cliente pelo seu Id
         [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(Guid Id)
         {
             Cliente ClienteProcurado = _clienteService.ProcuraCliente(Id); // Procura o cliente
@@ -95,6 +104,9 @@ namespace CidadesClientes_API.Controllers
 
         // Método para atualizar seu cliente pelo seu Id
         [HttpPut("{Id}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AtualizaId(Guid Id, [FromBody] ClienteDTO clienteDTO)
         {
             var result = _clienteService.VerificaErros(clienteDTO); // Faz a veirificação das informações enviadas
