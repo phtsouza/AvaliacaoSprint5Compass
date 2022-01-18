@@ -15,7 +15,8 @@ Criar banco de dados com o nome `ClienteCidadeDb`
 Configurar conexão com o banco de dados no arquivo `Startup.cs`
 
 ```
-  services.AddDbContext<ClienteCidadeDbContext>(Op => Op.UseSqlServer("Data Source=YOUR_LOCALHOST\SQLEXPRESS;
+  services.AddDbContext<ClienteCidadeDbContext>(Op => Op.UseSqlServer("
+                                                Data Source=YOUR_LOCALHOST\SQLEXPRESS;
                                                 Initial Catalog=ClienteCidadeDb;
                                                 Integrated Security=True;
                                                 Connect Timeout=5;
