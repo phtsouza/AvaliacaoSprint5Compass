@@ -69,7 +69,7 @@ namespace TestesCidadesClientesAPI
             cliente.Nascimento = nascimento;
 
             var memoryDatabase = new DbContextOptionsBuilder<ClienteCidadeDbContext>()
-                .UseInMemoryDatabase("test1")
+                .UseInMemoryDatabase("test2")
                 .Options;
             var memoryContext = new ClienteCidadeDbContext(memoryDatabase);
 
@@ -108,7 +108,7 @@ namespace TestesCidadesClientesAPI
             cliente.Nascimento = nascimento;
 
             var memoryDatabase = new DbContextOptionsBuilder<ClienteCidadeDbContext>()
-                .UseInMemoryDatabase("test2")
+                .UseInMemoryDatabase("test3")
                 .Options;
             var memoryContext = new ClienteCidadeDbContext(memoryDatabase);
 
@@ -128,6 +128,7 @@ namespace TestesCidadesClientesAPI
             ClienteRetornaDTO clienteRetornaDTO = clienteService.Cadastra(cliente, cepDTO);
 
             // assert
+
             Assert.Null(clienteRetornaDTO);
         }
 
@@ -146,7 +147,7 @@ namespace TestesCidadesClientesAPI
             cliente.Nascimento = nascimento;
 
             var memoryDatabase = new DbContextOptionsBuilder<ClienteCidadeDbContext>()
-                .UseInMemoryDatabase("test3")
+                .UseInMemoryDatabase("test4")
                 .Options;
             var memoryContext = new ClienteCidadeDbContext(memoryDatabase);
 

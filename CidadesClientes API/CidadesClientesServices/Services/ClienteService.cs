@@ -27,23 +27,25 @@ namespace CidadesClientesServices.Services
             _mapper = mapper;
         }
 
+        // Procedimento pelo qual faz a busca de informações do cep informado por meio da API ViaCep
         public ViaCepDTO BuscaCep(string CEP)
         {
-            var Url = $"http://www.viacep.com.br/ws/{CEP}/json/";
-            var Requisicao = WebRequest.Create(Url);
-            Requisicao.Method = "GET";
+            string Url = $"http://www.viacep.com.br/ws/{CEP}/json/"; // Url da API
+            WebRequest Requisicao = WebRequest.Create(Url);
+            Requisicao.Method = "GET"; // Informa o tipo da reuisição
 
-            using var Resposta = Requisicao.GetResponse();
-            using var Stream = Resposta.GetResponseStream();
-            using var Leitor = new StreamReader(Stream);
+            using WebResponse resp = Requisicao.GetResponse();
+            using var stream = resp.GetResponseStream();
+            using StreamReader leitor = new StreamReader(stream); 
 
-            var JsonViaCep = Leitor.ReadToEnd();
-            var result = JsonViaCep;
-            var ViaCepData = JsonConvert.DeserializeObject<ViaCepDTO>(result);
+            string JsonViaCep = leitor.ReadToEnd(); // Faz a leitura dos dados retornados pela API
+            string resultado = JsonViaCep;
+            ViaCepDTO ViaCepData = JsonConvert.DeserializeObject<ViaCepDTO>(resultado); // Transforma os dados em um objeto ViaCEP
 
-            return ViaCepData;
+            return ViaCepData; // Retorna o objeto
         }
 
+        // Procedimento pelo qual faz o cadastro de um cliente no banco de dados
         public ClienteRetornaDTO Cadastra(ClienteDTO clienteDTO, ViaCepDTO viaCepDTO)
         {
             ClienteRetornaDTO clienteRetornaDTO = new ClienteRetornaDTO();
@@ -52,7 +54,7 @@ namespace CidadesClientesServices.Services
             cliente.Logradouro = viaCepDTO.logradouro;
             cliente.Bairro = viaCepDTO.bairro;
 
-            var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == viaCepDTO.localidade && C.Estado == viaCepDTO.uf);
+            var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == viaCepDTO.localidade && C.Estado == viaCepDTO.uf); // Verifica se a cidade existe
             if (ContemCidade != null)
             {
                 cliente.CidadeId = ContemCidade.Id;
@@ -61,11 +63,12 @@ namespace CidadesClientesServices.Services
                 _context.SaveChanges();
                 clienteRetornaDTO.Id = cliente.Id;
 
-                return clienteRetornaDTO;
+                return clienteRetornaDTO; // Caso exista, o cliente é adicionado e retorna o seu Id
             }
-            return null;
+            return null; // Caso não exista, retorna null para que a cidade seja criada
         }
 
+        // Procedimento pelo qual retorna todos os clientes já cadastrados
         public IEnumerable<ClienteDTO> GetAll()
         {
             IEnumerable<Cliente> Clientes = _context.Clientes.Include(C => C.cidade);
@@ -74,6 +77,7 @@ namespace CidadesClientesServices.Services
             return ClientesDTO;
         }
 
+        // Procedimento pelo qual retorna o cliente pelo seu Id
         public Cliente ProcuraCliente(Guid Id)
         {
             Cliente ClienteProcurado = _context.Clientes.Include(C => C.cidade).FirstOrDefault(Cl => Cl.Id == Id);
@@ -81,6 +85,7 @@ namespace CidadesClientesServices.Services
             return ClienteProcurado;
         }
 
+        // Procedimento pelo ual retorna um clienteDTO pelo Id passado por parâmetro
         public ClienteDTO GetId(Guid Id)
         {
             Cliente ClienteProcurado = ProcuraCliente(Id);
@@ -90,12 +95,14 @@ namespace CidadesClientesServices.Services
             return ClienteRetornado;
         }
 
+        // Procedimento pelo qual exclui um cliente
         public void Delete(Cliente clienteProcurado)
         {
             _context.Remove(clienteProcurado);
             _context.SaveChanges();
         }
 
+        // Procedimento pelo qual atualiza um cliente
         public ClienteAtualizaDTO AtualizaCidade(ClienteDTO clienteDTO, Cliente clienteProcurado)
         {
             ClienteAtualizaDTO clienteAtualizaDTO = new ClienteAtualizaDTO();
@@ -103,10 +110,9 @@ namespace CidadesClientesServices.Services
 
             _mapper.Map(clienteDTO, clienteProcurado);
 
-
             if (cepOriginal != clienteDTO.Cep)
             {
-                ViaCepDTO viaCepDTO = BuscaCep(clienteDTO.Cep);
+                ViaCepDTO viaCepDTO = BuscaCep(clienteDTO.Cep); // Busca o novo cep, na API ViaCep
 
                 var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == viaCepDTO.localidade && C.Estado == viaCepDTO.uf);
                 if (ContemCidade != null)
@@ -117,7 +123,7 @@ namespace CidadesClientesServices.Services
                 }
                 else
                 {
-                    return null;
+                    return null; // Caso a cidade não exista, retorna null para que ela seja criada
                 }  
             }
             _context.SaveChanges();
@@ -125,6 +131,7 @@ namespace CidadesClientesServices.Services
             return clienteAtualizaDTO;
         }
 
+        // Procedimento pelo qual faz a validação das informações passada para o cadastro ou atualização dos clientes 
         public ValidationResult VerificaErros(ClienteDTO clienteDTO)
         {
             var cidadeValidator = new ClienteValidator();

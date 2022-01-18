@@ -22,12 +22,14 @@ namespace CidadesClientesServices.Services
             _mapper = mapper;
         }
 
+        // Procedimeno pelo qual atualiza uma cidade, com informações passadas por parâmetro
         public void AtualizaCidade(CidadeDTO cidadeDTO, Cidade cidadeParaAtualizar)
         {
             _mapper.Map(cidadeDTO, cidadeParaAtualizar);
             _context.SaveChanges();
         }
 
+        // Procedimento pelo qual cadastra uma cidade no banco de dados
         public CidadeRetornaDTO CadastrarCidade(CidadeDTO novaCidade)
         {
             CidadeRetornaDTO cidadeRetornaDTO = new CidadeRetornaDTO();
@@ -40,12 +42,14 @@ namespace CidadesClientesServices.Services
             return cidadeRetornaDTO;
         }
 
+        // Procedimento pelo qual deleta uma cidade
         public void Delete(Cidade cidadeRemovida)
         {
             _context.Remove(cidadeRemovida);
             _context.SaveChanges();
         }
 
+        // Procedimento pelo qual retorna uma lista com todas as cidades cadastradas no banco de dados
         public IEnumerable<CidadeDTO> GetAll()
         {
             IEnumerable<Cidade> TodasCidades = _context.Cidades;
@@ -54,6 +58,7 @@ namespace CidadesClientesServices.Services
             return ListaCidadesDTO;
         }
 
+        // Procedimento pelo qual retorna a cidade pelo id passado por parâmetro
         public Cidade GetId(Guid Id)
         {
             Cidade cidadeProcurada = _context.Cidades.FirstOrDefault(C => C.Id == Id);
@@ -61,6 +66,7 @@ namespace CidadesClientesServices.Services
             return cidadeProcurada;
         }
 
+        // Procedimento pelo qual faz a validação das informações passada para o cadastro ou atualização das cidades
         public ValidationResult VerificaErros(CidadeDTO cidadeDTO)
         {
             var cidadeValidator = new CidadeValidator();
@@ -69,6 +75,7 @@ namespace CidadesClientesServices.Services
             return result;
         }
 
+        // Procedimento criado para verificar se uma cidade já existe no banco de dados
         public CidadeDTO VerificaIgualdade(string nomeCidade, string estadoCidade)
         {
             var ContemCidade = _context.Cidades.FirstOrDefault(C => C.Nome == nomeCidade && C.Estado == estadoCidade);
@@ -76,9 +83,9 @@ namespace CidadesClientesServices.Services
             if (ContemCidade != null)
             {
                 CidadeDTO cidadeRetorno = _mapper.Map<CidadeDTO>(ContemCidade);
-                return cidadeRetorno;
+                return cidadeRetorno; // Caso exista, retorna a cidade já existente
             }
-            return null;
+            return null; // Caso não exista retorna null
         }
     }
 }
