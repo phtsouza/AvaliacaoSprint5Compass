@@ -44,3 +44,18 @@ Configurar conexão com o banco de dados no arquivo `Startup.cs`
 ## Desafio Extra
 Como desafio extra proposto na sprint, foi adicionado o Fluent Validation para realizar as verificações dos dados enviados para as requisições Post e Put.
 
+<h3 id="autor">Autor</h3>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/phtsouza">
+        <img src="https://github.com/phtsouza.png?size=100" width="100px;" alt="Pedro Souza"/><br>
+        <sub>
+          <b>Pedro Souza</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
