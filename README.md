@@ -27,6 +27,8 @@ Configurar conexão com o banco de dados no arquivo `Startup.cs`
                                                 ));
 ```
 
+Executar o comando `Update-Database`
+
 ## Funcionalidades Endpoint Cidades
 - ✅Post 
 - ✅Get 
